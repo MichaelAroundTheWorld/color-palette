@@ -1,0 +1,18 @@
+.itemBody{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    & h3 {
+        margin-top: 3%;
+        cursor: pointer;
+    }
+}
+
+.subtitle{
+    color: black;
+}
+
+.activeText{
+    color: white;
+}
