@@ -1,13 +1,5 @@
-// .colorPaletteBody{
-//     display: grid;
-//     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-// }
-
-// .itemBody{
-//     display:flex;
-//     flex-direction: column;
-// }
-
-header {
+.header {
     text-align: center;
+    margin-bottom: 2%;
+    font-size: 3rem;
 }

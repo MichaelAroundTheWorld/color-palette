@@ -1,30 +1,43 @@
-import { FC, useState } from "react";
-import { colorItems } from "../../data/data";
-import cx from "classnames";
+import { FC } from "react";
 import styles from "./ColorItem.module.scss";
+import cx from "classnames";
 
 interface ColorItemProps {
-  className?: string;
-  setCurrentColor: (color: string) => void;
-  setCopiedText: (text: string) => void;
+  itemClassName: string;
+  color: string;
+  handleItemClick: (color: string) => void;
+  subtitle: string;
+  setCopied: (text: string) => void;
+  setSelectedColor: (text: string) => void;
+  selectedColor: string;
 }
 
 export const ColorItem: FC<ColorItemProps> = ({
-  className,
-  setCurrentColor,
-  setCopiedText,
+  itemClassName,
+  subtitle,
+  handleItemClick,
+  color,
+  setCopied,
+  setSelectedColor,
+  selectedColor,
 }) => {
   return (
-    <div className={cx(styles.colorPaletteBody, className)}>
-      {colorItems.map((colorItem) => (
-        <div className={styles.itemBody}>
-          <div
-            className={cx(styles.baseItem, styles[colorItem.className])}
-            onClick={() => setCurrentColor(colorItem.hex)}
-          />
-          <h3 onClick={() => setCopiedText(colorItem.hex)}>{colorItem.hex}</h3>
-        </div>
-      ))}
+    <div className={styles.itemBody}>
+      <div
+        className={itemClassName}
+        onClick={() => {
+          handleItemClick(color);
+          setSelectedColor(color);
+        }}
+      />
+      <h3
+        className={cx(styles.subtitle, {
+          [styles.activeText]: selectedColor === subtitle,
+        })}
+        onClick={() => setCopied(subtitle)}
+      >
+        {subtitle}
+      </h3>
     </div>
   );
 };
